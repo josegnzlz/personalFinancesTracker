@@ -20,7 +20,7 @@ class CSV:
     @classmethod
     def add_entry(cls, date, amount, category, description):
         new_entry = {
-            "date": date,
+            "date": datetime.strptime(date, "%Y-%m-%d").strftime("%d-%m-%Y"),
             "amount": amount,
             "category": category,
             "description": description
@@ -60,15 +60,6 @@ class CSV:
             print(f"Net Savings: ${(total_income - total_expense):.2f}")
 
         return df
-
-
-def add():
-    CSV.initialice_csv()
-    date = get_date("Enter the date of the transaction (dd-mm-yyyy) or enter for todays date: ", allow_default=True)
-    amount = get_amount()
-    category = get_category()
-    description = get_description()
-    CSV.add_entry(date, amount, category, description)
 
 def plot_transactions(df):
     df.set_index("date", inplace=True)

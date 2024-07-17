@@ -1,0 +1,8 @@
+{% for entry in data_entries %}
+    <div>{{entry["date"]}}</div>
+    {% if entry["category"] == "Income" %}
+        <div>Income: {{entry["amount"]}}</div>
+    {% elif entry["category"] == "Expense" %}
+        <div>Expense: {{entry["amount"]}}</div>
+    {% endif %}
+{% endfor %}
